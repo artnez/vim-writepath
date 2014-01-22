@@ -9,8 +9,8 @@ function! CreateParentPath(filepath)
     if filereadable(a:filepath)
         return
     endif
-    let dirname = join(split(a:filepath, '/')[0:-2], '/')
-    if isdirectory('/' . expand(dirname))
+    let dirname = '/' . join(split(a:filepath, '/')[0:-2], '/')
+    if isdirectory(expand(dirname))
         return
     endif
     call mkdir(dirname, 'p')
