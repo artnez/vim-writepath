@@ -9,7 +9,7 @@ function! CreateParentPath(filepath)
     if filereadable(a:filepath)
         return
     endif
-    let dirname = '/' . join(split(a:filepath, '/')[0:-2], '/')
+    let dirname = fnamemodify(expand(a:filepath), ':h')
     if isdirectory(expand(dirname))
         return
     endif
